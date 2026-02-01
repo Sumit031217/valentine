@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine?</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8cdda; /* Light pink background */
+            font-family: 'Arial', sans-serif;
+        }
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+        img {
+            width: 150px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        button {
+            padding: 12px 25px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            font-weight: bold;
+        }
+        #yesBtn {
+            background-color: #e91e63; /* Darker pink */
+            color: white;
+        }
+        #yesBtn:hover {
+            transform: scale(1.1);
+        }
+        #noBtn {
+            background-color: #e0e0e0;
+            color: #333;
+            position: relative; 
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <img id="gif" src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExbXNreHdvbGs5eXlyb3F5aHhqbjY0ZnY0b3Z4eW1tN214aW14aW14YiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/KxtjPgBHlTm8iMaXRk/giphy.gif" alt="Cute Bear">
+        
+        <h1 id="question">Yukta, will you be my valentine?</h1>
+        
+        <div class="btn-container">
+            <button id="yesBtn" onclick="sayYes()">Yes</button>
+            <button id="noBtn" onmouseover="moveButton()" onclick="moveButton()">No</button>
+        </div>
+    </div>
+
+    <script>
+        // Logic to make the NO button run away
+        function moveButton() {
+            var x = Math.random() * (window.innerWidth - 100);
+            var y = Math.random() * (window.innerHeight - 50);
+            var btn = document.getElementById('noBtn');
+            
+            // This makes the button jump to a new spot
+            btn.style.position = 'fixed'; 
+            btn.style.left = x + 'px';
+            btn.style.top = y + 'px';
+        }
+
+        // Logic for when they click YES
+        function sayYes() {
+            document.getElementById('question').innerText = "Yay! I knew you'd say yes! ❤️";
+            // Change the image to a happy dancing bear
+            document.getElementById('gif').src = "https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif";
+            
+            // Hide the buttons
+            document.getElementById('yesBtn').style.display = 'none';
+            document.getElementById('noBtn').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
